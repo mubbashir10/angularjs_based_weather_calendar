@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  
+    <!--code fo meta tags-->  
+    <meta charset="utf-8">
+	
+	<!--code for page title-->
+    <title>Weather Showing Calendar</title>
+	
+	<!--code for stylesheets-->
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/skeleton.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href="http://fonts.googleapis.com/css?family=Questrial" rel="stylesheet" type="text/css"/>
+	
+	<!--code for scripts-->
+	<script src="js/pouchdb-5.1.0.min.js"></script>
+	<script src="js/angular.min.js"></script>
+	<script src="js/script.js"></script>
+		
+  </head>
+  
+  <body onload=weatherJSON()>
+
+    <!--code for main wrapper-->
+	<div class="wrapper">
+
+		<h4>Weather Calendar</h4>
+		<span>The calendar shows you date of the current month and weather of the current day!</span>
+
+		<div class="calendar" data-ng-app="calApp" data-ng-controller="calAppCtrl">
+
+			<!--month-->
+			<h2 id="monthName" class="monthName">{{monthName}}, {{currentYear}}</h2>
+
+			<br>
+
+			<div class="row">
+
+				<!--calendar-->	
+				<div class="six columns">	
+					<table>
+						<!--days header-->
+						<tr>
+							<th>Sun</th>
+							<th>Mon</th>
+							<th>Tue</th>
+							<th>Wed</th>
+							<th>Thur</th>
+							<th>Fri</th>
+							<th>Sat</th>
+						</tr>
+						<!--days name-->
+						<tr ng-repeat="x in calendar" ng-if="$index % 7 == 0">
+							<td>{{ calendar[$index] }}</td>
+			            	<td>{{ calendar[$index + 1] }}</td>
+			            	<td>{{ calendar[$index + 2] }}</td>
+			            	<td>{{ calendar[$index + 3] }}</td>
+			            	<td>{{ calendar[$index + 4] }}</td>
+			            	<td>{{ calendar[$index + 5] }}</td>
+			            	<td>{{ calendar[$index + 6] }}</td>
+			            </tr>
+					</table>
+				</div>
+			</div>
+
+			<div class="row">
+			
+				<!--weather-->
+				<div class="six columns">
+
+					<h3>Islamabad</h3>
+					<h5>{{timeStamp}}</h5>
+					<h1 id="temp"></h1>
+					<br><br><br>
+					<div id="cond"></div>
+				</div>
+			</div>
+				
+		</div>
+	
+		<div style="font-family:verdana;font-size:13px;"><a href="http://mubbashir10.com">Designed by Mubbashir10</a></div>
+
+	</div>
+
+  </body>
+</html>
